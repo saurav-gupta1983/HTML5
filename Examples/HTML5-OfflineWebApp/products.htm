@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+   	<title>:: Customer Management System - Manage your Customers effectively ::</title>
+	<link rel="STYLESHEET" type="text/css" href="myStyles.css">
+
+	<Script language="JavaScript">
+
+	//Uncomment the following block to demo the Online, Offline Events
+	
+	//Begin Comment Block
+	/*
+	var flag;
+	window.addEventListener("online",fnOnline,true);
+	window.addEventListener("offline",fnOffline,true);
+
+	function fnOnline()
+	{
+	    alert("The application is Online");
+	    flag = true;
+	}
+
+	function fnOffline()
+	{
+	    alert("The application is Offline");
+	    flag = false;
+	}
+	
+	function fnSubmit()
+	{
+	   if (flag)
+	      document.forms[0].submit();
+	   else
+	       alert("The application is offline. Please try logging in when connected!");
+	}
+
+	*/
+	// End Comment Block
+
+	</Script>
+
+    </head>
+    <body>
+	<h2 id="title">Product Suite</h2>
+	<div id="nav">
+	     <a href="aboutus.htm">About Us</a><br>
+	     <a href="products.htm">Products</a><br>
+	     <a href="contact.htm">Contact Us</a><br>
+	</div>
+	<div id="brief">In 2010 CMS completed product name changes to better characterize the targeted offerings for each area of a total CRM solution.
+
+The following is a brief description of the products we offer:<br><br>
+<div id="caption">Customer Targeting:</div> We assist dealers with marketing platforms for their products.<br><br>
+<div id="caption">Customer Acquisition:</div> We assist dealerships in closing additional sales through programs designed to "touch" those unsold prospects on a regular and timely basis.<br><br>
+<div id="caption">Customer Retention:</div> We provide weekly communication to your sales team for consistent and on-time customer follow-up.<br><br>
+<div id="caption">Customer Survey:</div> We provide customized customer satisfaction surveys, dealership loyalty surveys, and other calling campaigns designed to assist dealerships with a greater understanding of their customers.<br><br>
+
+	</div>
+	<div id="login">
+		<form id="frmLogin" action="login.asp" method="post">
+		     <label>LoginID&nbsp;&nbsp;&nbsp;</label><input type="text" id="txtLogin" name="txtLogin" size="10" maxlength="15"><br>
+		     <label>Password</label><input type="password" id="txtPass" name="txtPass" size="10" maxlength="15"><br>
+		     <input type="button" id="btnSubmit" name="btnSubmit" value="Login" onclick="fnSubmit()">
+
+		</form>
+	</div>
+    </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+ 
+<style type="text/css"> 
+    #trash-can{
+        height:300px;
+        width:203px;
+        top:300px;
+        position:absolute;
+        left:400px;
+        }
+     
+    #paper
+    {
+    float:left;
+    width:100px;
+    height:100px;
+ 
+    }
+    #coke_can
+    {
+    float:left;
+    width:100px;
+    height:100px;
+    }
+    #empty_wrapper
+    {
+    float:left;
+    width:100px;
+    height:100px;
+    }
+    #bottle
+    {
+    float:left;
+    width:100px;
+    height:100px;
+    }
+    #saw_dust
+    {
+    float:left;
+    width:100px;
+    height:100px;
+    }
+ 
+     
+    #done{
+     
+    top:120px;
+    left:150px;
+    position:absolute;
+    height:200px;
+    width:260px;
+    }
+    #thanks{
+     
+    top:220px;
+    left:150px;
+    position:absolute;
+    height:200px;
+    width:260px;
+    }
+</style> 
+</head> 
+<body> 
+     
+    <h3>Drag the waste and dump it into dustbin, to keep your surroundings clean.</h3>
+    <div draggable="true" id="paper" ondragstart="drag_me(this, event)"><img src="paper.jpeg"></div>
+    <div draggable="true" id="coke_can" ondragstart="drag_me(this, event)"><img src="coke_can.jpeg"></div>
+    <div draggable="true" id="empty_wrapper" ondragstart="drag_me(this, event)"><img src="empty_wrapper.jpeg"></div>
+    <div draggable="true" id="bottle" ondragstart="drag_me(this, event)"><img src="bottle.jpeg"></div>
+    <div draggable="true" id="saw_dust" ondragstart="drag_me(this, event)"><img src="saw-dust.jpeg"></div>
+    <div id="trash-can" ondrop="drop_here(this, event)" ondragenter="return false" ondragover="return false">
+    <img src="trash-can.jpg" height="250px" width="203px">
+    </div>
+    <div id="done" style="display:none;"><img src="alert.jpeg"></div>
+    <div id="thanks" style="display:none;"><img src="thanks.jpeg"></div>
+    <script type="text/javascript">
+    var count=0;
+function drag_me(target, e) {
+        e.dataTransfer.setData('Text', target.id);
+        document.getElementById("thanks").style.display="none";
+        }
+function drop_here(target, e) {
+        count++;
+        var target_id = e.dataTransfer.getData('Text');
+    document.getElementById("thanks").style.display="block";
+    target.appendChild(document.getElementById(target_id));
+        document.getElementById(target_id).style.display="none";
+    if(count==5)
+    {   document.getElementById("thanks").style.display="none";
+        document.getElementById("done").style.display="block";
+    }
+        e.preventDefault();
+        //Cancels the event if it is cancelable, without stopping further propagation of the event. Calling preventDefault during any stage of event flow cancels the event
+    } 
+</script> 
+</body> 
+</html>

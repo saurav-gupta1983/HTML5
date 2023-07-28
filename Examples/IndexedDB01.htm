@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8"/>
+<meta content="Simple example of HTML5 video" keywords="HTML5,Video"/>
+<title>HTML5 IndexedDB Demo</title>
+<link rel="stylesheet" type="text/css" href="styles.css"/>
+<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+<script src="modernizr-1.6.min.js"></script>
+<script>
+function init()
+{
+   if(Modernizr.indexeddb)
+       document.getElementById("chkSupport").textContent = "Your browser supports IndexedDB";
+   else
+       document.getElementById("chkSupport").textContent = "Your browser does not support IndexedDB";
+}
+</script>
+</head>
+<body onload="init()">
+<h3>HTML5 IndexedDB Example</h3>
+
+<div id="chkSupport"></div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8"/>
+ <title>HTML5 Canvas Demo 22</title>
+ <script>
+  var canvas;
+  var ctx;
+
+document.body.addEventListener('touchmove', function(event) {
+  event.preventDefault();
+}, false); 
+
+  function drawCanvas()
+  {
+   canvas = document.getElementById("can1");
+    
+    if (canvas.getContext)
+    {
+      ctx = canvas.getContext("2d");
+      showEvent("Mouseover here");  
+    }
+  }
+
+function showEvent(str)
+{
+   ctx.clearRect(0,0,canvas.width,canvas.height);
+   ctx.font = "20pt Calibri";
+   ctx.textAlign = "center";
+   ctx.fillText(str,180,100);
+}
+
+function handletouch(evt)
+{
+     for(i=0;i<evt.touches.length;i++)
+     {
+          var tmpTouch = evt.touches[i];
+          ctx.beginPath;
+          ctx.arc(tmpTouch.pageX,tmpTouch.pageY,20,0,2*Math.PI,true);
+          ctx.fillStyle = "rgb(0,0,255)";
+          ctx.strokeStyle = "rgb(255,0,0)";
+          ctx.fill();
+          ctx.stroke();
+          ctx.closePath();
+     }
+}
+
+
+ </script>
+</head>
+<body onload="drawCanvas()">
+
+<h2>This is a demo for the CANVAS element</h2> 
+
+<canvas id="can1" width="600" height="300"
+              ontouchmove="handletouch(event)">
+<b>Your browser does not support canvas</b>
+</canvas>
+
+
+</body>
+
+</html>

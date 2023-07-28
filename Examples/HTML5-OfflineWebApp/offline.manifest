@@ -1,0 +1,14 @@
+CACHE MANIFEST
+# Version 1.0.0
+
+CACHE:
+aboutus.htm
+default.htm
+products.htm
+myStyles.css
+
+NETWORK:
+login.asp
+
+FALLBACK:
+/ fallback.htm

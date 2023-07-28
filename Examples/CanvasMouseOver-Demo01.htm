@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Canvas MouseOver Demo</title>
+<script>
+ 
+var canvas=null;
+var context = null;
+var rectangularRegions = new Array();
+ 
+function isMouseoverRectangularRegion(e, rectangularRegion) {
+	var mouseX = e.clientX - canvas.offsetLeft;
+	var mouseY = e.clientY - canvas.offsetTop;
+ 
+	if(mouseX >= rectangularRegion.x 
+		&& mouseX <= (rectangularRegion.x + 
+			rectangularRegion.width) 
+		&& mouseY >= rectangularRegion.y 
+		&& mouseY <= (rectangularRegion.y+
+			rectangularRegion.height)) {
+		return true;
+	}		
+	else return false;
+}
+ 
+function RectangularRegion(x,y,width,height) {
+	this.x=x;
+	this.y=y;
+	this.width=width;
+	this.height=height;
+}
+ 
+function drawRectangle(x,y, width, height, fillColor) {
+	context.beginPath();
+	context.rect(x,y,width,height);
+	context.fillStyle=fillColor;
+	context.fill();
+	context.lineWidth=5;
+	context.strokeStyle="black"; 
+	context.stroke();	
+ 
+	rectangularRegions.push(
+		new RectangularRegion(x,y,width,height));
+}
+ 
+ 
+function init() {
+	canvas=document.getElementById("myCanvas");
+	context=canvas.getContext("2d");
+	drawRectangle(75,50, 100, 50, "#8ED6FF");
+	drawRectangle(300,75, 200, 75, "red");
+	drawEventDisplay("Mouseover a rectangular region...");
+}
+ 
+function drawEventDisplay(eventDisplay) {
+	context.clearRect(0,0,400,30);
+	context.font="18pt Calibri";
+	context.fillStyle="black";
+	context.fillText(eventDisplay, 10, 25);
+}
+ 
+function handleMouseover(e) {
+	if (isMouseoverRectangularRegion(e, 
+		rectangularRegions[0])){
+		drawEventDisplay("Blue region!");
+	}
+	else if (isMouseoverRectangularRegion(e, 
+		rectangularRegions[1])){
+		drawEventDisplay("Red region!");
+	}
+	else {
+		drawEventDisplay("Mouseover a rectangular region...");
+	}
+ 
+}
+ 
+</script>
+</head>
+<body onload="init()">
+	<canvas id="myCanvas" width="578" height="200"
+	onmousemove="handleMouseover(event)"></canvas>
+</body>
+</html>

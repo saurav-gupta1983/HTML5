@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="Simple example of CSS3 Properties" keywords="HTML5,Stucture, CSS3"/>
+<title>CSS3 Example</title>
+<style>
+div
+{
+counter-reset:section;
+}
+h3:before
+{
+   content:counter(section);
+   counter-increment:section;
+}
+</style>
+</head>
+<body>
+<div style="background-color:aqua">
+<h3>. Section </h3>
+<p>This is from the first section of my document!</p>
+<h3>. Section </h3>
+<p>This is from the second section of my document!</p>
+</div>
+<div style="background-color:grey">
+<h3>. Section </h3>
+<p>This is from the first section of my document!</p>
+<h3>. Section </h3>
+<p>This is from the second section of my document!</p>
+</div>
+</body>
+</html>

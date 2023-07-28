@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8"/>
+<meta content="Simple example of HTML5 video" keywords="HTML5,Video"/>
+<title>HTML5 IndexedDB Demo</title>
+<link rel="stylesheet" type="text/css" href="styles.css"/>
+<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+
+<script>
+ 
+var indexedDB,db;
+var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
+
+function init()
+{
+   if(Modernizr.indexeddb)
+     {
+        document.getElementById("chkSupport").textContent = "Your browser supports IndexedDB";
+        indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
+        var empData = [
+		   { name: "Smith", email:"smith@acme.com" },
+		   { name: "Dave", email: "dave@acme.com"}
+         ];
+
+        var request = indexedDB.open("EmpDB",1);  // the second parameter is the version
+        request.onerror = function(evt) { 
+          alert("Database error code: " + evt.target.errorCode); 
+        }; 
+
+         request.onsuccess = function(evt) {
+            db = evt.target.result;
+            alert("Database opened");
+         }; 
+
+         request.onupgradeneeded = function(evt) {
+           db = evt.target.result; 
+           if(!db.objectStoreNames.contains("emp")){
+                var objectStore = db.createObjectStore("emp", {keyPath: "id", autoIncrement: true});
+                alert("Object store created");
+           }
+           	     alert("Database Upgrade");
+                        objectStore.createIndex("name", "name", {unique: false });
+                        objectStore.createIndex("email", "email", {unique: true});
+
+                        for (i in empData)
+                        {
+		    objectStore.add(empData[i]);
+                        }
+            
+        }
+    }
+   else
+       document.getElementById("chkSupport").textContent = "Your browser does not support IndexedDB";
+}
+
+  function addData()
+  {
+       var tmpName = document.getElementById("txtName").value;
+       var tmpEmail = document.getElementById("txtEmail").value;
+       var transaction = db.transaction(["emp"], "readwrite");
+       var objectStore = transaction.objectStore("emp");
+       var request = objectStore.add({ name : tmpName, email : tmpEmail });
+       request.onsuccess = fnSuccess();
+       transaction.oncomplete = fnCompleted();
+  }
+
+  function fnSuccess()
+  {
+     alert("Data added successfully");
+  }
+
+  function fnCompleted()
+  {
+     alert("Transaction completed");
+  }
+
+
+</script>
+</head>
+<body onload="init()">
+<h3>HTML5 IndexedDB Example</h3>
+    <script src="modernizr-1.6.min.js"></script>
+
+<div id="chkSupport"></div>
+<form id="frm1">
+<label for="txtName">Name : </label>
+<input type="text" name="txtName" id="txtName" maxlength="20"/><br/>
+<label for="txtEmail">Email : </label>
+<input type="email" name="txtEmail" id="txtEmail" maxlength="30"/><br/>
+<input type="button" id="btnAdd" name="btnAdd" value="Add Data" onclick="addData()"/>
+</form>
+</body>
+</html>

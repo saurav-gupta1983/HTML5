@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" manifest="offline.manifest">
+    <head>
+   	<title>:: Customer Management System - Manage your Customers effectively ::</title>
+	<link rel="STYLESHEET" type="text/css" href="myStyles.css">
+
+	<Script language="JavaScript">
+	    if (window.applicationCache)
+	          alert("AppCache is supported");
+	    else
+	          alert("This browser does not support AppCache");
+
+	// Uncomment the following block for applicationCache related events
+
+	// Begin Comment Block for applicationCache related events
+	/*
+	   window.applicationCache.onupdateready = fnUpdateCache();
+
+	   function fnUpdateCache(e)
+	   {
+	       alert("Application update ready and will be applied");
+	       window.applicationCache.swapCache();
+	   }
+	*/
+	// End Comment Block for applicationCache related events
+
+
+	//Uncomment the following block to demo the Online, Offline Events
+	
+	//Begin Comment Block
+	/*
+	var flag;
+	window.addEventListener("online",fnOnline,true);
+	window.addEventListener("offline",fnOffline,true);
+
+	function fnOnline()
+	{
+	    alert("The application is Online");
+	    flag = true;
+	}
+
+	function fnOffline()
+	{
+	    alert("The application is Offline");
+	    flag = false;
+	}
+	
+	function fnSubmit()
+	{
+	   if (flag)
+	      document.forms[0].submit();
+	   else
+	       alert("The application is offline. Please try logging in when connected!");
+	}
+
+	*/
+	// End Comment Block
+
+	</Script>
+    </head>
+    <body>
+	<h2 id="title">Customer Management System</h2>
+	<div id="nav">
+	     <a href="aboutus.htm">About Us</a><br>
+	     <a href="products.htm">Products</a><br>
+	     <a href="contact.htm">Contact Us</a><br>
+	</div>
+	<div id="brief">Customer Management Systems (CMS) can provide you years of proven experience with CRM programs to target, aquire, retain, and understand prospective and sold customers.</div>
+	<div id="login">
+		<form id="frmLogin" action="login.asp" method="post">
+		     <label>LoginID&nbsp;&nbsp;&nbsp;</label><input type="text" id="txtLogin" name="txtLogin" size="10" maxlength="15"><br>
+		     <label>Password</label><input type="password" id="txtPass" name="txtPass" size="10" maxlength="15"><br>
+		     <input type="button" id="btnSubmit" name="btnSubmit" value="Login" onclick="fnSubmit()">
+
+		</form>
+	</div>
+    </body>
+</html>

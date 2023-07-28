@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+   	<title>:: Customer Management System - Manage your Customers effectively ::</title>
+	<link rel="STYLESHEET" type="text/css" href="myStyles.css">
+
+	<Script language="JavaScript">
+	    
+	//Uncomment the following block to demo the Online, Offline Events
+	
+	//Begin Comment Block
+	/*
+	var flag;
+	window.addEventListener("online",fnOnline,true);
+	window.addEventListener("offline",fnOffline,true);
+
+	function fnOnline()
+	{
+	    alert("The application is Online");
+	    flag = true;
+	}
+
+	function fnOffline()
+	{
+	    alert("The application is Offline");
+	    flag = false;
+	}
+	
+	function fnSubmit()
+	{
+	   if (flag)
+	      document.forms[0].submit();
+	   else
+	       alert("The application is offline. Please try logging in when connected!");
+	}
+
+	*/
+	// End Comment Block
+
+	</Script>
+
+    </head>
+    <body>
+	<h2 id="title">About Us</h2>
+	<div id="nav">
+	     <a href="aboutus.htm">About Us</a><br>
+	     <a href="products.htm">Products</a><br>
+	     <a href="contact.htm">Contact Us</a><br>
+	</div>
+	<div id="brief">CMS, founded in 1989 has been providing long-term customer relationship management (CRM) programs for over two decades. The company was founded by an enterprisingteam of professionals. 
+The combination of unique and industry-specific products and services, coupled with the efforts of experienced sales and service teams has established CMS as a leader in customer acquisition and retention services. Our products increase revenue through staying in touch with your customers. We have the experience and knowledge to design unique CRM programs for you that will bring new traffic and keep your current customers coming back.</div>
+	<div id="login">
+		<form id="frmLogin" action="login.asp" method="post">
+		     <label>LoginID&nbsp;&nbsp;&nbsp;</label><input type="text" id="txtLogin" name="txtLogin" size="10" maxlength="15"><br>
+		     <label>Password</label><input type="password" id="txtPass" name="txtPass" size="10" maxlength="15"><br>
+		     <input type="button" id="btnSubmit" name="btnSubmit" value="Login" onClick="fnSubmit()">
+
+		</form>
+	</div>
+    </body>
+</html>

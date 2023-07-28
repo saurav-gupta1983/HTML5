@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="Simple example of HTML5 audio" keywords="HTML5,Audio"/>
+<title>HTML5 Audio Demo</title>
+<link rel="stylesheet" type="text/css" href="styles.css"/>
+<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+<script>
+  var aud;
+   function play()
+   {
+      if(!document.getElementById("bg_sound").paused)
+      {
+          document.getElementById("bg_sound").pause();
+          document.getElementById("playcontroller").src="play.jpg";
+      }
+     else
+     {
+         document.getElementById("bg_sound").play();
+         document.getElementById("playcontroller").src="pause.jpg";
+     }
+   }
+   function setVol()
+   {
+       if(!document.getElementById("bg_sound").muted)
+       {
+           document.getElementById("bg_sound").muted=true;
+           document.getElementById("controller").src = "sound-mute.gif";
+       }
+      else
+      {
+           document.getElementById("bg_sound").muted=false;
+           document.getElementById("controller").src = "sound.gif"; 
+      }
+   }
+
+   function init()
+   {
+         aud = document.getElementsByTagName("audio")[0];
+         aud.addEventListener("canplaythrough",function(){
+		alert("File loaded, ready to rock!!!!");
+	}, false);
+         aud.addEventListener("ended", function(){
+		alert("Clip ended");
+	}, false);
+   }
+  
+   function restart(){
+	aud.currentTime = 0;
+	aud.play();
+   }
+
+   function volUp()
+   {
+	aud.volume += 0.1;
+	if (aud.volume > 0.1)
+	    document.getElementById("controller").src = "sound.gif";
+   }
+   function volDown()
+   {
+	if(aud.volume < 0.1){
+	    document.getElementById("controller").src = "sound-mute.gif";
+                   }
+	else
+	    aud.volume -= 0.1;
+   }
+
+</script>
+</head>
+<body onload="init()">
+<h3>HTML5 Audio Example</h3>
+<h4>Audio Example</h4>
+<audio id="bg_sound" src="TestMusic.ogg" preload = "auto" autoplay="autoplay" >
+  Your browser does not support the &lt;audio&gt; element!
+</audio>
+<br/>
+<img id="playcontroller" src="pause.jpg" onclick="play()"/>&#160;&#160;&#160;
+<img id="controller" src="sound.gif" onclick="setVol()"/>
+<form>
+<input type="button" name="btnRst" id="btnRst" value="Restart" onclick="restart()">
+<input type="button" name="btnUp" id="btnUp" value="Up" onclick="volUp()">
+<input type="button" name="btnDown" id="btnDown" value="Down" onclick="volDown()">
+</form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8"/>
+ <title>HTML5 Canvas Demo 24</title>
+ <script>
+  var canvas;
+  var ctx;
+
+  function drawCanvas()
+  {
+   canvas = document.getElementById("can1");
+    
+    if (canvas.getContext)
+    {
+      ctx = canvas.getContext("2d");
+      ctx.translate(215,30);
+      ctx.scale(.5,.5);
+      ctx.rect(0,0,150,75);
+      ctx.fillStyle = "rgba(25,25,255,0.4)";
+      ctx.fill();
+    }
+  }
+
+ </script>
+</head>
+<body onload="drawCanvas()">
+
+<h2>This is a demo for the CANVAS element's scale method</h2> 
+
+<canvas id="can1" width="600" height="300">
+     <b>Your browser does not support canvas</b>
+</canvas>
+
+
+</body>
+
+</html>

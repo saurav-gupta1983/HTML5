@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8"/>
+ <title>HTML5 Canvas Demo 5</title>
+ <script>
+  function drawCanvas()
+  {
+    var canvas = document.getElementById("can1");
+    if (canvas.getContext)
+    {
+      var ctx = canvas.getContext("2d");
+     
+      ctx.strokeStyle = "rgb(200,0,0)";
+
+      ctx.beginPath();
+      ctx.arc(75,75,50,0,Math.PI*2,true);  // Outer circle
+      ctx.moveTo(110,75);
+      ctx.arc(75,75,35,0,Math.PI,false);   // Mouth
+      ctx.moveTo(65,65);
+      ctx.arc(60,65,5,0,Math.PI*2,true);   // Left eye
+      ctx.moveTo(95,65);
+      ctx.arc(90,65,5,0,Math.PI*2,true);   // Right eye
+      ctx.stroke();
+    }
+  }
+ </script>
+</head>
+<body onload="drawCanvas()">
+
+<h2>This is a demo for the CANVAS element</h2> 
+
+<canvas id="can1" width="150" height="150">
+<b>Your browser does not support canvas</b>
+</canvas>
+
+
+</body>
+
+</html>

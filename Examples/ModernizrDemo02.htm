@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8"/>
+<meta content="Simple example of Modernizr" keywords="HTML5,Modernizr"/>
+<title>Modernizr Demo</title>
+<link rel="stylesheet" type="text/css" href="styles.css"/>
+<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+<style>
+#myDiv {
+    background: url(background01.png) top left repeat-x;
+}
+.multiplebgs #myDiv {
+    background: url(background01.png) top left repeat-x, url(background02.png) bottom left repeat-x;
+</style>
+<script src="modernizr-1.6.min.js"></script>
+<script>
+ function chkFont()
+ { 
+   if(Modernizr.fontface)
+   {
+    alert("This browser supports the Font face property");
+   }
+   else
+   {
+     alert("This browser does NOT support the Font face property");
+   }
+   if (Modernizr.multiplebgs)
+   {
+      alert("This browser supports multiple backgrounds");
+   }
+   else
+   {
+      alert("This browser does NOT support multiple backgrounds");
+   }
+ }
+</script>
+</head>
+<body onload="chkFont()">
+<h3>Modernizr Demo</h3>
+<div id="myDiv" style="width:800px;height:1200px">
+Background in Divs
+</div>
+</body>
+</html>
